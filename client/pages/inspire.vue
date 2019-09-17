@@ -29,6 +29,7 @@
 
 <script>
 /* eslint no-unused-expressions: "off" */
+import axios from 'axios'
 
 export default {
   data () {
@@ -37,44 +38,22 @@ export default {
       disp_text: 'hoge',
       is_pause: false,
       pause_count: 0,
-      text_lists: [
-        '聖騎士や',
-        '英雄といった',
-        '選ばれし天才が',
-        'ベテランとなって尚、',
-        '半分も攻略できない',
-        '難関ダンジョン。',
-        'その最下層に、',
-        'テイマーである俺は、',
-        '3体の従魔とともに',
-        'やってきていた。',
-        'ここは、',
-        '迷宮主がすむ部屋の',
-        '目の前。',
-        '扉を開けたら、',
-        '戦闘開始だ。',
-        '部屋の扉を',
-        '開けると、',
-        'そこにいたのは',
-        '長めの棒を振りまわす、',
-        '1匹の',
-        '猿型の魔物。',
-        'このダンジョンの',
-        'ダンジョンボス',
-        '──孫悟空だ。',
-        '「キイエエェェェェェッ！」',
-        '部屋に入るなり、',
-        '孫悟空は',
-        '俺や従魔たち',
-        'めがけて',
-        '如意棒での',
-        '突きを',
-        '繰り出してくる。'
-      ],
+      text_lists: [],
       speed: 300
     }
   },
   mounted () {
+    axios.post('https://us-central1-rsvp-252712.cloudfunctions.net/function-3', {
+    // axios.post('https://us-central1-rsvp-252712.cloudfunctions.net/function-4', {
+      message: '聖騎士や英雄といった選ばれし天才がベテランとなって尚、半分も攻略できない難関ダンジョン。'
+    }, {
+      'Content-Type': 'application/json'
+    }).then(
+      (res) => {
+        console.log(res.data)
+        this.text_lists = res.data
+      }
+    )
     this.rsvp()
   },
   methods: {

@@ -1,11 +1,7 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <img
-        src="/v.png"
-        alt="Vuetify.js"
-        class="mb-5"
-      >
+      <Display />
       <blockquote class="blockquote">
         &#8220;Second, solve the problem. Then, write the code.&#8221;
         <footer>
@@ -30,8 +26,12 @@
 <script>
 /* eslint no-unused-expressions: "off" */
 import axios from 'axios'
+import Display from '~/components/Display.vue'
 
 export default {
+  components: {
+    Display
+  },
   data () {
     return {
       hoge: 'fuga',

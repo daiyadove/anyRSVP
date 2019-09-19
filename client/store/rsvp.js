@@ -1,24 +1,10 @@
+import axios from 'axios'
+
 export const state = () => {
   return {
     counter: 0,
     disp_text: '',
-    text_lists: [
-      '聖騎士や',
-      '英雄といった',
-      '選ばれし天才が',
-      'ベテランと',
-      'なって',
-      '尚、',
-      '半分も',
-      '攻略できない難関ダンジョン。',
-      'その最下層に、',
-      'テイマーである俺は、',
-      '3体の',
-      '従魔とともに',
-      'やって',
-      'きて',
-      'いた。'
-    ],
+    text_lists: [],
     speed: 300,
     is_pause: false,
     pause_count: -1
@@ -31,6 +17,9 @@ export const mutations = {
   },
   setDispText (state, text) {
     state.disp_text = text
+  },
+  setTextList (state, rsvpData) {
+    state.text_lists = rsvpData
   },
   setPauseCount (state, count) {
     state.pause_count = count
@@ -75,5 +64,18 @@ export const actions = {
     if (state.is_pause === false) {
       commit('setPause', true)
     }
+  },
+  getRsvpData ({ commit }) {
+    axios.post('https://us-central1-rsvp-252712.cloudfunctions.net/function-3', {
+    // axios.post('https://us-central1-rsvp-252712.cloudfunctions.net/function-4', {
+      message: '聖騎士や英雄といった選ばれし天才がベテランとなって尚、半分も攻略できない難関ダンジョン。'
+    }, {
+      'Content-Type': 'application/json'
+    }).then(
+      (res) => {
+        console.log(res.data)
+        commit('setTextList', res.data)
+      }
+    )
   }
 }

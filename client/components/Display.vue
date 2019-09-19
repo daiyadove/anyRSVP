@@ -15,6 +15,9 @@
 <script>
 
 export default {
+  mounted () {
+    this.$store.dispatch('rsvp/getRsvpData')
+  },
   methods: {
     play () {
       this.$store.dispatch('rsvp/play')

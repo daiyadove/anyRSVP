@@ -1,17 +1,18 @@
 <template>
   <v-card dark>
     <v-card-actions>
+      {{ $store.state.rsvp.speed }}
+      <v-slider
+        v-model="speed"
+        label="速度"
+        min="100"
+        max="700"
+      ></v-slider>
       <v-btn
         @click="prev"
       >
         Prev
       </v-btn>
-      <v-slider
-        v-model="speed"
-        label="速度"
-        min="1000"
-        max="100"
-      ></v-slider>
     </v-card-actions>
     <v-card-actions v-if="$store.state.rsvp.is_pause === true">
       <v-btn
@@ -43,6 +44,18 @@
 <script>
 
 export default {
+  computed: {
+    speed: {
+      get () {
+        console.log('get')
+        return this.$store.state.rsvp.speed
+      },
+      set (value) {
+        console.log('set', value)
+        this.$store.commit('rsvp/setSpeed', value)
+      }
+    }
+  },
   methods: {
     play () {
       this.$store.dispatch('rsvp/play')

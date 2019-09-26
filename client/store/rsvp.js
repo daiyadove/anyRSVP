@@ -33,6 +33,9 @@ export const mutations = {
   },
   updateInputText (state, message) {
     state.input_text = message
+  },
+  setSpeed (state, value) {
+    state.speed = value
   }
 }
 

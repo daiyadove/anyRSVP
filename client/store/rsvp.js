@@ -79,6 +79,7 @@ export const actions = {
       (res) => {
         console.log(res.data)
         commit('setTextList', res.data)
+        commit('setPauseCount', 0)
         dispatch('play')
       }
     )

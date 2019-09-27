@@ -26,11 +26,9 @@ export default {
   computed: {
     input_text: {
       get () {
-        console.log('get')
         return this.$store.state.rsvp.input_text
       },
       set (value) {
-        console.log('set', value)
         this.$store.commit('rsvp/updateInputText', value)
       }
     }

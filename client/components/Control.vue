@@ -1,12 +1,17 @@
 <template>
   <v-card dark>
     <v-card-actions>
-      {{ $store.state.rsvp.speed }}
       <v-slider
         v-model="speed"
         label="速度"
         min="100"
         max="700"
+        thumb-size="27"
+        thumb-label="always"
+        append-icon="mdi-run"
+        prepend-icon="mdi-bike"
+        step="10"
+        tick-size="4"
       ></v-slider>
       <v-btn
         @click="prev"
@@ -47,11 +52,9 @@ export default {
   computed: {
     speed: {
       get () {
-        console.log('get')
         return this.$store.state.rsvp.speed
       },
       set (value) {
-        console.log('set', value)
         this.$store.commit('rsvp/setSpeed', value)
       }
     }

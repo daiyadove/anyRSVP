@@ -88,7 +88,6 @@ export const actions = {
       'Content-Type': 'application/json'
     }).then(
       (res) => {
-        console.log(res.data)
         commit('setTextList', res.data)
         commit('setPauseCount', 0)
         dispatch('play')

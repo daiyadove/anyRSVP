@@ -17,6 +17,14 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  manifest: { // manifestの設定
+    lang: 'ja',
+    name: '速読家になろう',
+    short_name: '速読家になろう',
+    description: '速読家になれます',
+    background_color: '#000000',
+    orientation: 'portrait'
+  },
   /*
   ** Customize the progress-bar color
   */
